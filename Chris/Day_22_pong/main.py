@@ -27,7 +27,7 @@ ball.move_ball()
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     ball.move_ball()
 
     # Detect collision with ceiling / floor:
@@ -39,10 +39,13 @@ while game_is_on:
         ball.bounce_x()
 
     # Detect out of bounds collision
-    if ball.xcor() > 385 or ball.xcor() < -385:
-        ball.goto(0, 0)
-        ball.bounce_x()
+    if ball.xcor() > 385:
+        ball.reset_position()
+        scoreboard.l_point()
 
+    if ball.xcor() < -385:
+        ball.reset_position()
+        scoreboard.r_point()
 
 
 

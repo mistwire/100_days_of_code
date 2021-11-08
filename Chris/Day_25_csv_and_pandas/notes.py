@@ -37,14 +37,14 @@ import pandas
 # print(temp_list)
 # print(len(temp_list))
 #
-# # TODO: Work out avg temp from list of temps
+# # Work out avg temp from list of temps
 # average_temp = sum(temp_list) / len(temp_list)
 # print(average_temp)
 #
 # # OR use the pandas
 # print(data['temp'].mean())
 #
-# # TODO: find max value using pandas data Series methods
+# # find max value using pandas data Series methods
 # print(data['temp'].max())
 #
 # # Get data in columns - can access data via column name:
@@ -53,14 +53,14 @@ import pandas
 # # Get a row
 # print(data[data.day == "Monday"])
 #
-# # TODO: pull out row where temp was max
+# # pull out row where temp was max
 # print(data[data.temp == data.temp.max()])
 #
 # # Use dot notation with variables and 'methods' !
 # monday = data[data.day == "Monday"]
 # print(monday.condition)
 #
-# # TODO: Get monday temp and convert to Fahrenheit:
+# # Get monday temp and convert to Fahrenheit:
 # print((monday.temp * 1.8) + 32)
 #
 # # Create a dataframe from scratch

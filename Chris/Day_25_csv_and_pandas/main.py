@@ -27,10 +27,10 @@ def write_state(state_name, x, y):
 while len(guessed_states) < 50:
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States", prompt="Input state name").title()
     if answer_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [i for i in all_states if i not in guessed_states]
+        # for state in all_states:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
         df_out = pandas.DataFrame(missing_states, columns='state')
         df_out.to_csv('states_to_learn.csv')
         break

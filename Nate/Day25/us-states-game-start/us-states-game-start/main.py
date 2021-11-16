@@ -19,10 +19,10 @@ df = pd.read_csv(states_file)
 while game_on:
     attempt = screen.textinput(title=f"{correct}/50 correct", prompt="Enter name of a US state")
     state = df[df.state == attempt]
-    
+
     if len(state) > 0:
-        x_cord = df[df.state == attempt].x.item()
-        y_cord = df[df.state == attempt].y.item()
+        x_cord = int(state.x)
+        y_cord = int(state.y)
         turtle.goto(x_cord, y_cord)
         turtle.write(attempt, move=True)
         correct += 1

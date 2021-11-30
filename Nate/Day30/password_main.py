@@ -44,22 +44,21 @@ def add_password():
 
 def find_password():
     website = website_input.get()
-
     try:
         with open("passwords.json", "r") as f:
             data = json.load(f)
-            for entry in data:
-                if entry == website:
-                    email = data[entry]["email"]
-                    password = data[entry]["password"]
-                    pyperclip.copy(password)
-                    messagebox.showinfo(title=entry, message=f"Email: {email}\nPassword: {password}\nPassword copied"
-                                                             f" to clipboard")
-                    return
-
-            messagebox.showinfo(title=website, message=f"{website} not found")
     except FileNotFoundError:
         messagebox.showinfo(title=website, message=f"{website} not found")
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            pyperclip.copy(password)
+            messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}\nPassword copied"
+                                                       f" to clipboard")
+        else:
+            messagebox.showinfo(title=website, message=f"{website} not found")
+
 
 # ---------------------------- UI  ------------------------------- #
 

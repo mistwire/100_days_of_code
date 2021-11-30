@@ -42,7 +42,7 @@ def add_password():
                 json.dump(data, f, indent=4)
 
 
-def search():
+def find_password():
     website = website_input.get()
 
     try:
@@ -55,8 +55,11 @@ def search():
                     pyperclip.copy(password)
                     messagebox.showinfo(title=entry, message=f"Email: {email}\nPassword: {password}\nPassword copied"
                                                              f" to clipboard")
+                    return
+
+            messagebox.showinfo(title=website, message=f"{website} not found")
     except FileNotFoundError:
-        pass
+        messagebox.showinfo(title=website, message=f"{website} not found")
 
 # ---------------------------- UI  ------------------------------- #
 
@@ -87,7 +90,7 @@ email_input.insert(END, "email@email.com")
 password_input = Entry(width=21)
 password_input.grid(row=3, column=1, sticky=W, padx=20)
 
-search_button = Button(text="Search", command=search)
+search_button = Button(text="Search", command=find_password)
 search_button.grid(row=1, column=2)
 generate_button = Button(text="Generate Password", command=password_gen)
 generate_button.grid(row=3, column=2, sticky=W)

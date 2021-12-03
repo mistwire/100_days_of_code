@@ -5,36 +5,36 @@ import random
 BACKGROUND_COLOR = "#B1DDC6"
 LANGUAGE_CSV = "spanish_1000words.csv"
 word_dict = {}
-timer = None
+random_word = None
+missed_words = []
+counting = False
 
 
-# def display_card(count):
-#     global timer
-#     if count > 0:
-#         print(count)
-#         card_canvas.create_image(400, 260, image=card_front_img)
-#         timer = window.after(1000, display_card, count - 1)
-#     else:
-#         card_canvas.create_image(400, 260, image=card_back_img))
-
-
-# def timer_start():
-#     display_card(5)
+def card_flip():
+    card_canvas.itemconfig(canvas_image, image=card_back_img)
+    card_canvas.itemconfig(card_title, fill="white", text="English")
+    card_canvas.itemconfig(card_word, fill="white", text=random_word["Translation"])
 
 
 def import_data():
     global word_dict
     try:
-        df = pd.read_csv(LANGUAGE_CSV)
+        df = pd.read_csv("Words_to_learn.csv")
         word_dict = df.to_dict(orient="records")
     except FileNotFoundError:
-        pass
+        df = pd.read_csv(LANGUAGE_CSV)
+        word_dict = df.to_dict(orient="records")
 
 
 def random_card():
-    global word_dict
+    global random_word
+    global timer
+    window.after_cancel(timer)
     random_word = random.choice(word_dict)
+    card_canvas.itemconfig(canvas_image, image=card_front_img)
+    card_canvas.itemconfig(card_title, text="Spanish", fill="black")
     card_canvas.itemconfig(card_word, text=random_word["Word"], fill="black")
+    timer = window.after(3000, card_flip)
 
 
 def press_x():
@@ -42,6 +42,10 @@ def press_x():
 
 
 def press_y():
+    global word_dict
+    word_dict = [word for word in word_dict if not (word["Word"] == random_word["Word"])]
+    new_df = pd.DataFrame(word_dict)
+    new_df.to_csv("words_to_learn.csv", index=False)
     random_card()
 
 
@@ -71,20 +75,11 @@ y_button.grid(row=1, column=1)
 
 
 import_data()
-card_canvas.create_image(400, 260, image=card_front_img)
+canvas_image = card_canvas.create_image(400, 260, image=card_front_img)
 card_title = card_canvas.create_text(400, 150, text="Spanish", fill="black", font=("arial", 30, "italic"))
 card_word = card_canvas.create_text(400, 250, text="", fill="black", font=("arial", 30, "bold"))
+timer = window.after(3000, card_flip)
 random_card()
-
-# select word
-# for item in word_dict:
-#     word = item
-#     xlate = word_dict[item]
-
-# timer_start()
-
-
-# display word
 
 
 window.mainloop()

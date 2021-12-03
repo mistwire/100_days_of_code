@@ -3,7 +3,7 @@ import pandas as pd
 import random
 
 BACKGROUND_COLOR = "#B1DDC6"
-LANGUAGE_CSV = "spanish_1000words.csv"
+LANGUAGE_CSV = "data/spanish_1000words.csv"
 word_dict = {}
 random_word = None
 missed_words = []
@@ -19,7 +19,7 @@ def card_flip():
 def import_data():
     global word_dict
     try:
-        df = pd.read_csv("Words_to_learn.csv")
+        df = pd.read_csv("data/words_to_learn.csv")
         word_dict = df.to_dict(orient="records")
     except FileNotFoundError:
         df = pd.read_csv(LANGUAGE_CSV)
@@ -45,7 +45,7 @@ def press_y():
     global word_dict
     word_dict = [word for word in word_dict if not (word["Word"] == random_word["Word"])]
     new_df = pd.DataFrame(word_dict)
-    new_df.to_csv("words_to_learn.csv", index=False)
+    new_df.to_csv("data/words_to_learn.csv", index=False)
     random_card()
 
 

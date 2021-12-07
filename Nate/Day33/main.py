@@ -13,10 +13,20 @@ def get_iss_pos():
     response = requests.get(url="http://api.open-notify.org/iss-now.json")
     response.raise_for_status()
     data = response.json()
-    lat = int(float(data['iss_position']['latitude']))
-    long = int(float(data['iss_position']['latitude']))
+    lat = float(data['iss_position']['latitude'])
+    long = float(data['iss_position']['longitude'])
     location = (lat, long)
     return location
+
+
+def iss_overhead():
+    if is_night():
+        current_iss_pos = get_iss_pos()
+        iss_lat = current_iss_pos[0]
+        iss_long = current_iss_pos[1]
+
+        if (MY_LAT - 5) <= iss_lat <= (MY_LAT + 5) and (MY_LONG - 5) <= iss_long <= (MY_LONG + 5):
+            return True
 
 
 def is_night():
@@ -39,11 +49,5 @@ def is_night():
         return True
 
 
-if is_night():
-    iss_position = get_iss_pos()
-    my_position = (int(MY_LAT), int(MY_LONG))
-
-    if iss_position == my_position:
-        send_mail('me@email.com', "look up")
-
-
+if iss_overhead():
+    send_mail('me@email.com', "look up")

@@ -10,12 +10,9 @@ class QuizBrain:
         return self.question_number < len(self.question_list)
 
     def next_question(self) -> str:
-        if self.question_number < len(self.question_list):
-            self.current_question = self.question_list[self.question_number]
-            self.question_number += 1
-            return f"Q.{self.question_number}: {self.current_question.text}"
-        else:
-            return "End of quiz!"
+        self.current_question = self.question_list[self.question_number]
+        self.question_number += 1
+        return f"Q.{self.question_number}: {self.current_question.text}"
 
     def check_answer(self, user_answer) -> bool:
         correct_answer = self.current_question.answer

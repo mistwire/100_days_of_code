@@ -12,7 +12,7 @@ class QuizInterface:
         self.window.title("Quizzler")
         self.window.config(padx=20, pady=20, bg=THEME_COLOR)
 
-        self.score_label = Label(text="Score: ", bg=THEME_COLOR, fg="white")
+        self.score_label = Label(text="Score: 0", bg=THEME_COLOR, fg="white")
         self.score_label.grid(row=0, column=1, pady=10)
 
         self.canvas = Canvas(width=300, height=250, bg="white")
@@ -40,13 +40,20 @@ class QuizInterface:
     def get_next_question(self):
         question_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=question_text)
+        self.canvas.configure(bg="white")
 
     def select_true(self):
-        if self.quiz.check_answer("True"):
-            print(self.quiz.score)
-        self.get_next_question()
+        self.feedback(self.quiz.check_answer("True"))
 
     def select_false(self):
-        if self.quiz.check_answer("False"):
-            print(self.quiz.score)
-        self.get_next_question()
+        self.feedback(self.quiz.check_answer("True"))
+
+    def feedback(self, answer):
+        if answer:
+            self.canvas.configure(bg="green")
+            self.window.after(1000, self.get_next_question)
+            self.score_label.config(text=f"Score: {self.quiz.score}")
+        else:
+            self.canvas.configure(bg="red")
+            self.window.after(1000, self.get_next_question)
+

@@ -3,7 +3,6 @@ from twilio.rest import Client
 import os
 
 TWILIO_ACCOUNT_SID = "AC9f71e683a403031c1c5a6dc4ec10959a"
-TWILIO_AUTH_TOKEN = "f3f4b7612f841e814fe051ba634e6c57"
 MY_LAT = 47
 MY_LONG = -53
 open_weather_key = "f83bda1d52d74dba4cfb9c0e922b89f1"
@@ -15,7 +14,7 @@ MY_NUMBER = "+13039173568"
 
 def send_twilio_msg(message):
     account_sid = os.environ[TWILIO_ACCOUNT_SID]
-    auth_token = os.environ[TWILIO_AUTH_TOKEN]
+    auth_token = os.environ["TWILIO_AUTH_TOKEN"]
     client = Client(account_sid, auth_token)
 
     message = client.messages \

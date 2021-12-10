@@ -10,7 +10,6 @@ COMPANY_NAME = "Tesla Inc"
 alpha_api_key = "9AJX6HRVW9KOJK63"
 alpha_uri = "https://www.alphavantage.co/query"
 alpha_function = "TIME_SERIES_DAILY"
-stock_sym = "NIO"
 
 TWILIO_ACCOUNT_SID = "AC9f71e683a403031c1c5a6dc4ec10959a"
 TWILIO_NUMBER = "+15304831979"
@@ -49,12 +48,9 @@ def send_twilio_msg(message):
     print(message.sid)
 
 
-yesterday = str(date.today() - dt.timedelta(days=1))
-day_before = str(date.today() - dt.timedelta(days=2))
-
 alpha_params = {
     "function": alpha_function,
-    "symbol": stock_sym,
+    "symbol": STOCK,
     "apikey": alpha_api_key
 }
 
@@ -62,28 +58,30 @@ response = requests.get(url=alpha_uri, params=alpha_params)
 response.raise_for_status()
 
 data = response.json()
+yesterday = str(date.today() - dt.timedelta(days=1))
+day_before = str(date.today() - dt.timedelta(days=2))
 
 yesterday_close = float(data['Time Series (Daily)'][yesterday]['4. close'])
 day_before_close = float(data['Time Series (Daily)'][day_before]['4. close'])
 
 delta_price = round((day_before_close - yesterday_close), 2)
 
-percent_change = round(((delta_price / day_before_close) * 100), 2)
+percent_change = round(((delta_price / yesterday_close) * 100), 2)
 
 change = abs(percent_change)
 
 if change > 2:
-    news = get_news("Tesla")
+    news = get_news(COMPANY_NAME)
     articles = news['articles'][:3]
     message = ""
     if percent_change < 0:
         message += f"TSLA: 🔻{percent_change}%\n"
-        print(f"{stock_sym} went down by {change}%")
+        print(f"{STOCK} went down by {change}%")
     elif percent_change > 0:
         message += f"TSLA: 🔺{percent_change}%\n"
-        print(f"{stock_sym} went up by {change}%")
+        print(f"{STOCK} went up by {change}%")
     else:
-        print(f"{stock_sym} had no change")
+        print(f"{STOCK} had no change")
 
     for article in articles:
         headline = article['title']

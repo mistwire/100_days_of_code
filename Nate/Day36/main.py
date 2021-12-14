@@ -5,8 +5,8 @@ from twilio.rest import Client
 import os
 
 
-STOCK = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+STOCK = "PFE"
+COMPANY_NAME = "Pfizer"
 alpha_api_key = "9AJX6HRVW9KOJK63"
 alpha_uri = "https://www.alphavantage.co/query"
 alpha_function = "TIME_SERIES_DAILY"
@@ -20,8 +20,6 @@ news_uri = "https://newsapi.org/v2/everything"
 
 
 def get_news(query):
-    import requests
-
     params = {
             'q': query,
             'from': day_before,
@@ -58,8 +56,20 @@ response = requests.get(url=alpha_uri, params=alpha_params)
 response.raise_for_status()
 
 data = response.json()
-yesterday = str(date.today() - dt.timedelta(days=1))
-day_before = str(date.today() - dt.timedelta(days=2))
+today = date.today()
+
+# can't pull data from the weekends, fix to work around that
+if today.weekday() == 0:
+    # today is Monday
+    yesterday = str(today - dt.timedelta(days=3))
+    day_before = str(today - dt.timedelta(days=4))
+elif today.weekday() == 1:
+    # today is Tuesday
+    yesterday = str(today - dt.timedelta(days=1))
+    day_before = str(today - dt.timedelta(days=4))
+else:
+    yesterday = str(date.today() - dt.timedelta(days=1))
+    day_before = str(date.today() - dt.timedelta(days=2))
 
 yesterday_close = float(data['Time Series (Daily)'][yesterday]['4. close'])
 day_before_close = float(data['Time Series (Daily)'][day_before]['4. close'])

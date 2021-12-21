@@ -13,10 +13,11 @@ my_label.pack()  # <-- will center the label - https://docs.python.org/3/library
 my_label["text"] = "New Text"  # Can change like a dict entry
 my_label.config(text="New Text using config")  # Or via config entry
 
-# Button
 
+# Make a Button
 def button_clicked():
     print("I got clicked")
+
 
 def button_clicked_2():
     my_label["text"] = line_input.get()
@@ -28,7 +29,6 @@ button.pack()
 # Entry (basically an input) - https://tcl.tk/man/tcl8.6/TkCmd/entry.htm
 line_input = tkinter.Entry(width=10)
 line_input.pack()
-
 
 # Challenge - make button click change label text
 

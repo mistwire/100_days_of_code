@@ -20,7 +20,8 @@ def button_clicked():
 
 
 def button_clicked_2():
-    my_label["text"] = line_input.get()
+    new_text = line_input.get()
+    my_label.config(text=new_text)
 
 
 button = tkinter.Button(text="Click Me", command=button_clicked_2)
@@ -30,9 +31,10 @@ button.pack()
 line_input = tkinter.Entry(width=10)
 line_input.pack()
 
-# Challenge - make button click change label text
 
-# Challenge - make the Entry string show up as the label when you click the button
+# Challenge - make button click change label text - done see button_clicked func
+
+# Challenge - make the Entry string show up as the label when you click the button - done button_clicked_2 func
 
 
 # use mainloop to keep window on screen (has to be at the end)
@@ -42,3 +44,4 @@ window.mainloop()
 def add(*args):
     for i in args:
         print(i)
+

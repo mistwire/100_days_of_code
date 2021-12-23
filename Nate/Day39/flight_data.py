@@ -1,11 +1,10 @@
 class FlightData:
-    def __init__(self, fly_from, fly_to, date_from, date_to, return_from, return_to, price=""):
-        self.fly_from = fly_from
-        self.fly_to = fly_to
-        self.dateFrom = date_from
-        self.dateTo = date_to
-        self.return_from = return_from
-        self.return_to = return_to
+
+    def __init__(self, price, origin_city, origin_airport, destination_city, destination_airport, out_date, return_date):
         self.price = price
-
-
+        self.origin_city = origin_city
+        self.origin_airport = origin_airport
+        self.destination_city = destination_city
+        self.destination_airport = destination_airport
+        self.out_date = out_date
+        self.return_date = return_date

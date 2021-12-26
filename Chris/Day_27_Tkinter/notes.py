@@ -11,7 +11,6 @@ my_label = tkinter.Label(text="Label Here", font=("Arial", 24, "bold"))
 # need to specify how label gets displayed before it will show:
 my_label.pack()  # <-- will center the label - https://docs.python.org/3/library/tkinter.html#the-packer
 my_label["text"] = "New Text"  # Can change like a dict entry
-my_label.config(text="New Text using config")  # Or via config entry
 
 
 # Make a Button

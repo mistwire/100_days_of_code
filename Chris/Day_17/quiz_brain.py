@@ -1,6 +1,6 @@
-#TODO: ask the question
-#TODO: check if the answer is correct
-#TODO: check if we're at the end of the quiz
+# ask the question
+# check if the answer is correct
+# check if we're at the end of the quiz
 
 
 class QuizBrain:

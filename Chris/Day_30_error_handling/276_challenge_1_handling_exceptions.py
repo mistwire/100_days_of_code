@@ -56,17 +56,17 @@ def save():
     if len(website) == 0 or len(password) == 0:
         messagebox.showwarning(title="Oops", message="Don't leave empty fields")
     else:
-        # open file in read mode:
-        with open("data.json", mode="r") as f:
-            # Read old data:
-            data = json.load(f)
-            # Update old data w/ new data (add to existing dict):
+        try:
+            with open("data.json", mode="r") as f:
+                data = json.load(f)
+        except FileNotFoundError:
+            with open("data.json", mode="w") as f:
+                json.dump(new_data, f, indent=4)
+        else:
             data.update(new_data)
-        # re-open same file in write mode to update data
-        with open("data.json", mode="w") as f:
-            # Save updated data, indent keyword makes it more readable:
-            json.dump(data, f, indent=4)
-            # wipe the website & password entries after saving to file
+            with open("data.json", mode="w") as f:
+                json.dump(data, f, indent=4)
+        finally:
             website_entry.delete(0, 'end')
             password_entry.delete(0, 'end')
 

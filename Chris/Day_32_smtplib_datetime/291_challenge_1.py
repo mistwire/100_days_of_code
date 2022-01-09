@@ -20,7 +20,7 @@ print(quote)
 
 # use smtplib to send me that quote if it is Saturday:
 if day_of_week == 6:
-    with smtplib.SMTP ("smtp.gmail.com", port=587) as connection:
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         # start and secure connection to email server:
         connection.starttls()
         # login

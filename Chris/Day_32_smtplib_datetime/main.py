@@ -42,6 +42,31 @@
 import datetime as dt
 import pandas
 import random
+import smtplib
+
+my_email = "mistwire.test01@gmail.com"
+password = "SooperSekritP@ssword!!"
+now = dt.datetime.now()
+today = (now.month, now.day)
+# print(today)
 
 
+df = pandas.read_csv("birthdays.csv")
+birthday_dict = {(data_row.month, data_row.day): data_row for (index, data_row) in df.iterrows()}
+# print(birthday_dict[(1, 9)])
+
+if today in birthday_dict:
+    with open(f"letter_templates/letter_{random.randint(1, 3)}.txt") as letter:
+        email_text = letter.read()
+        name = birthday_dict[today]["name"]
+        email_named = email_text.replace("[NAME]", name)
+        print(birthday_dict[today]['email'])
+        with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+            connection.starttls()
+            connection.login(user=my_email, password=password)
+            connection.sendmail(
+                from_addr=my_email,
+                to_addrs=birthday_dict[today]['email'],
+                msg=f"Subject:Happy Birthday!!!\n\n{email_named}"
+            )
 

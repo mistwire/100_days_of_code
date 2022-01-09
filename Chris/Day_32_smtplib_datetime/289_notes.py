@@ -2,7 +2,7 @@ import smtplib
 
 # make a burner email account:
 my_email = "mistwire.test01@gmail.com"
-password = "Severe-Merchant-Peace-9"
+password = "xxxxxxxx"
 
 # connect to email provider's server (use with to avoid open/close issue):
 # connection = smtplib.SMTP("smtp.gmail.com", port=587)

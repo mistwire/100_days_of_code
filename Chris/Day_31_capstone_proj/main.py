@@ -58,19 +58,20 @@ right_image = tkinter.PhotoImage(file="images/right.png")
 
 # Canvas
 canvas = tkinter.Canvas(width=800, height=526, bg=BACKGROUND_COLOR, highlightthickness=0)
-card_background = canvas.create_image(400, 263, image=card_front_image)
-card_title = canvas.create_text(400, 150, text="", font=("Arial", 40, "italic"))
-card_word = canvas.create_text(400, 263, text="", font=("Arial", 60, "bold"))
+canvas.create_image(400, 263, image=card_front_image)
+canvas.create_text(400, 150, text="Title", font=("Arial", 40, "italic"))
+canvas.create_text(400, 263, text="Word", font=("Arial", 60, "bold"))
 canvas.grid(column=0, row=0, columnspan=2)
 
 
 # Buttons
-wrong_button = tkinter.Button(image=wrong_image, highlightthickness=0, command=next_card)
+wrong_button = tkinter.Button(image=wrong_image, highlightthickness=0)
 wrong_button.grid(column=0, row=1)
 
-right_button = tkinter.Button(image=right_image, highlightthickness=0, command=know_word)
+right_button = tkinter.Button(image=right_image, highlightthickness=0)
 right_button.grid(column=1, row=1)
 
 next_card()
 
 gui.mainloop()
+

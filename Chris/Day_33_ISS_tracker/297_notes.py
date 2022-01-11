@@ -9,5 +9,8 @@ print(response.text)
 
 new_dict = response.json()
 
+print(new_dict)
 print(type(new_dict))
+
+
 

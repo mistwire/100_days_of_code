@@ -12,5 +12,7 @@ new_dict = response.json()
 print(new_dict)
 print(type(new_dict))
 
+# requests module can generate exceptions for us https://docs.python-requests.org/en/latest/
+print(response.raise_for_status())
 
 

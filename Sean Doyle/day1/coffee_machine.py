@@ -32,13 +32,6 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-# DONE Prompt User for coffee selection
-# DONE Turn off coffee machine by entering off
-# DONE Print Report
-# DONE Check if enough resources
-# DONE Process money
-# TODO Check if Transaction successful
-# TODO Make Coffee
 
 
 def prompt():

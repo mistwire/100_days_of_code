@@ -6,19 +6,10 @@ from dotenv import load_dotenv
 load_dotenv(".env")
 weather_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 api_key = os.getenv("api_key")
-print(api_key)
 # Use environment variables to keep them out of github
 # http://twil.io/secure
 account_sid = os.getenv("account_sid")
-print(account_sid)
 auth_token = os.getenv("auth_token")
-print(auth_token)
-
-rainy_place = {
-    "lat": 31.608013,
-    "lon": -84.335167,
-    "appid": api_key,
-}
 
 parameters = {
     "lat": 43.023979,
@@ -26,7 +17,7 @@ parameters = {
     "appid": api_key,
 }
 
-response = requests.get(url=weather_endpoint, params=rainy_place)
+response = requests.get(url=weather_endpoint, params=parameters)
 response.raise_for_status()
 print(f"status code: {response.status_code}")
 

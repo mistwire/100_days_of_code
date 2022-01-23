@@ -9,6 +9,8 @@ api_key = os.getenv("api_key")
 print(api_key)
 # Use environment variables to keep them out of github
 # http://twil.io/secure
+# good primer on environment variables and .env files https://www.twilio.com/blog/environment-variables-python
+
 account_sid = os.getenv("account_sid")
 print(account_sid)
 auth_token = os.getenv("auth_token")

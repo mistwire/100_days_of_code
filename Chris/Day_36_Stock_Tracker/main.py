@@ -8,7 +8,7 @@ COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-load_dotenv(".env")
+load_dotenv("../.env")
 stock_apikey = os.getenv("stock_apikey")
 news_apikey = os.getenv("news_apikey")
 twilio_account_sid = os.getenv("twilio_account_sid")

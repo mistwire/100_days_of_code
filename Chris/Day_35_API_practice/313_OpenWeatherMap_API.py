@@ -3,15 +3,15 @@ import requests
 from twilio.rest import Client
 from dotenv import load_dotenv
 
-load_dotenv(".env")
+load_dotenv("../.env")
 weather_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-api_key = os.getenv("api_key")
+api_key = os.getenv("weather_api_key")
 # Use environment variables to keep them out of github
 # http://twil.io/secure
 # good primer on environment variables and .env files https://www.twilio.com/blog/environment-variables-python
 
-account_sid = os.getenv("account_sid")
-auth_token = os.getenv("auth_token")
+account_sid = os.getenv("twilio_account_sid")
+auth_token = os.getenv("twilio_auth_token")
 
 parameters = {
     "lat": 43.023979,

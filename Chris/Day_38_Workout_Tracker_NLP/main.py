@@ -31,6 +31,7 @@ exercise_request_body = {
 }
 today = datetime.datetime.now()
 r_nutritionix = requests.post(url=exercise_endpoint, json=exercise_request_body, headers=nutritionix_headers)
+print(r_nutritionix.json())
 exercises = r_nutritionix.json()['exercises']
 for i in exercises:
     post_body = {

@@ -19,6 +19,14 @@ class CarManager:
             new_car.goto(300, random.randint(-250, 250))
             self.all_cars.append(new_car)
 
-    def move_cars(self):
+    def move_cars(self, level):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(STARTING_MOVE_DISTANCE + (MOVE_INCREMENT * level))
+
+    def check_hit(self, player):
+        for car in self.all_cars:
+            if (
+                abs(car.xcor() - player.xcor()) < 20
+                and abs(car.ycor() - player.ycor()) < 10
+            ):
+                return True

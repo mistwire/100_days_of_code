@@ -17,3 +17,10 @@ class Player(Turtle):
     def go_up(self):
         new_y = self.ycor() + 10
         self.goto(self.xcor(), new_y)
+
+    def check_finish_line(self):
+        return self.ycor() >= 280
+
+    def reset_position(self):
+        self.clear()
+        self.goto(STARTING_POSITION)

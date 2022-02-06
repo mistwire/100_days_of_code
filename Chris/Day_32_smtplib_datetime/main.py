@@ -45,7 +45,7 @@ import random
 import smtplib
 
 my_email = "mistwire.test01@gmail.com"
-password = "SooperSekritP@ssword!!"
+password = "Severe-Merchant-Peace-10"
 now = dt.datetime.now()
 today = (now.month, now.day)
 # print(today)

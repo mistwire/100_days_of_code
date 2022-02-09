@@ -27,7 +27,7 @@ titles = []
 for tag in all_tags:
     title = tag.get("alt")
     titles.append(title)
-cut_list_titles = titles[12:]
+cut_list_titles = titles[1:]
 movies = cut_list_titles[::-1]
 
 with open("movies.txt", mode="w") as file:

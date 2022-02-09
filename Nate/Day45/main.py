@@ -15,7 +15,6 @@ import requests
 # print(heading.string)
 
 
-
 url = "https://news.ycombinator.com/news"
 
 response = requests.get(url)

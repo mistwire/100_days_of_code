@@ -23,10 +23,7 @@ first_artist = billboard_soup.find_all(name='span', class_=first_artist_class)
 artists = billboard_soup.find_all(name='span', class_=artists_class)
 artists.insert(0, first_artist[0])
 
-artist_names = []
-for artist in artists:
-    filtered_artist_name = artist.getText().replace('\n', '')
-    artist_names.append(filtered_artist_name)
+artist_names = [artist.getText().replace('\n', '') for artist in artists]
 
 first_song_class = "c-title a-no-trucate a-font-primary-bold-s u-letter-spacing-0021 u-font-size-23@tablet lrv-u-font-size-16 u-line-height-125 u-line-height-normal@mobile-max a-truncate-ellipsis u-max-width-245 u-max-width-230@tablet-only u-letter-spacing-0028@tablet"
 songs_class = "c-title a-no-trucate a-font-primary-bold-s u-letter-spacing-0021 lrv-u-font-size-18@tablet lrv-u-font-size-16 u-line-height-125 u-line-height-normal@mobile-max a-truncate-ellipsis u-max-width-330 u-max-width-230@tablet-only"
@@ -36,12 +33,9 @@ tracks = billboard_soup.find_all(name='h3', class_=songs_class)
 tracks.insert(0, first_song[0])
 
 # get tracks and put track,artist tuples to a list
-song_names = []
-for track in tracks:
-    filtered_song_name = track.getText().replace('\n', '')
-    song_names.append(filtered_song_name)
+track_names = [track.getText().replace('\n', '') for track in tracks]
 
-top100 = list(zip(artist_names, song_names))
+top100 = list(zip(artist_names, track_names))
 
 auth_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(auth_manager=auth_manager)

@@ -1,0 +1,35 @@
+/* this is a multi-
+line comment */
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference */
+
+/************************** TAG SELECTORS *******************/
+h1 {
+    font-size: 200px;
+    color: red;
+}
+
+/* psuedo classes */
+img:hover {
+    background-color: gold;
+}
+
+/********************** CLASS SELECTORS ********************/
+/* use classes when you have a group of items to be styled the same way */
+/* can have more than one class per element */
+.bacon {
+    background-color: green;
+}
+
+.broccoli {
+    background-color: red;
+}
+.circular{
+    border-radius: 100%;
+}
+
+/********************** ID SELECTORS ********************/
+/* Use IDs when you have ONE item to be styled a specific way (rarely used) */
+#heading {
+    color: blue;
+}

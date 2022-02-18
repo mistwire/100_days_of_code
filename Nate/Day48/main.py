@@ -20,15 +20,14 @@ driver.get(URL)
 dates = driver.find_elements(By.CSS_SELECTOR, '.event-widget time')
 events = driver.find_elements(By.CSS_SELECTOR, '.event-widget li a')
 
-for i in range(len(dates)):
-    event = {
-        i: {
-            'time': dates[i].text,
-            'name': events[i].text
-        }
-    }
-    event_dict.update(event)
+events_dict = {}
 
-print(event_dict)
+for i in range(len(dates)):
+    events_dict[i] = {
+        'time': dates[i].text,
+        'name': events[i].text
+    }
+
+print(events_dict)
 
 driver.quit()

@@ -16,16 +16,18 @@ def driver_setup(url):
 
 def checks():
     threading.Timer(5.0, checks).start()
-    products = cookie_driver.find_elements(By.CSS_SELECTOR, 'div.product.unlocked')
+    product_prices = cookie_driver.find_elements(By.CSS_SELECTOR, 'div.product.unlocked.enabled span.price')
+    products = cookie_driver.find_elements(By.CSS_SELECTOR, 'div.product.unlocked.enabled')
     prices = []
-    for product in products:
+    for product in product_prices:
         price = re.findall(r'[0-9]+', product.text)
         price = int("".join(price))
         prices.append(price)
 
-    if len(prices > 0):
+    if len(prices) > 0:
         max_price = max(prices)
-        print(max_price)
+        price_index = prices.index(max_price)
+        products[price_index].click()
 
 
 cookie_driver = driver_setup(URL)

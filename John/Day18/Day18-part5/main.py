@@ -1,28 +1,35 @@
+import turtle
 import turtle as t
 import random
 
-# timmy = t.Turtle()
-# timmy.shape("turtle")
-# timmy.pensize(10)
-# timmy.speed(10)
-# timmy.pendown()
+turtle.screensize(250, 250)
+turtle.setworldcoordinates(-10, -10, 500, 500)
+turtle.speed('fastest')
+turtle.colormode(255)
 
-# walk_distance = 20
-# walk_turns = 100
-# walk_headings = [0, 90, 180, 270]
-# colors = ["red","orange","yellow","green","blue","violet"]
+timmy = t.Turtle()
+timmy_position = list(timmy.position())
 
-# walk_count = 0
+spot_cols = 10
+spot_rows = 10
+spot_distance = 50
+spot_size = 20
 
-# while walk_count < walk_turns:
-    
-    
-#     timmy.setheading(random.choice(walk_headings))
-#     timmy.color(random.choice(colors))
-#     timmy.forward(walk_distance)
+colors = [(237, 224, 80), (205, 4, 73), (236, 50, 130), (198, 164, 8), (111, 179, 218), (204, 75, 12)]
 
-#     walk_count += 1
+print(timmy.position())
 
+
+for _ in range(spot_rows):
+    for _ in range(spot_cols):
+        # timmy.color(random.choice(colors))
+        timmy.pendown()
+        timmy.dot(spot_size, random.choice(colors))
+        timmy.penup()
+        timmy.forward(spot_distance)
+    timmy_position[0] = 0
+    timmy_position[1] += spot_distance
+    timmy.setposition(timmy_position[0],timmy_position[1])
 
 
 new_screen = t.Screen()

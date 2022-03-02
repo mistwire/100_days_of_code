@@ -8,6 +8,7 @@ turtle.speed('fastest')
 turtle.colormode(255)
 
 timmy = t.Turtle()
+timmy.hideturtle()
 timmy_position = list(timmy.position())
 
 spot_cols = 10

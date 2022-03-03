@@ -1,5 +1,5 @@
 [package]
-name = "day13"
+name = "rusty_dungeon"
 version = "0.1.0"
 edition = "2021"
 

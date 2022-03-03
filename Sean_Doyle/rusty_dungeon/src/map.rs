@@ -1,7 +1,7 @@
 use crate::prelude::*;
 
 use crate::prelude::SCREEN_HEIGHT;
-const NUM_TILES: usize = (SCREEN_HEIGHT * SCREEN_HEIGHT) as usize;
+const NUM_TILES: usize = (SCREEN_HEIGHT * SCREEN_WIDTH) as usize;
 
 #[derive(Copy, Clone, PartialEq)]
 pub enum TileType {
@@ -42,16 +42,31 @@ impl Map {
         for y in 0..SCREEN_HEIGHT {
             for x in 0..SCREEN_WIDTH {
                 let idx = map_idx(x, y);
-                match self.tiles.get(idx) {
-                    Some(TileType::Floor) => {
+                match self.tiles[idx] {
+                    TileType::Floor => {
                         ctx.set(x, y, YELLOW, BLACK, to_cp437('.'));
                     }
-                    Some(TileType::Wall) => {
+                    TileType::Wall => {
                         ctx.set(x, y, GREEN, BLACK, to_cp437('#'));
                     }
-                    None => {}
                 }
             }
         }
     }
+    // pub fn render(&self, ctx: &mut BTerm) {
+    //     for y in 0..SCREEN_HEIGHT {
+    //         for x in 0..SCREEN_WIDTH {
+    //             let idx = map_idx(x, y);
+    //             match self.tiles.get(idx) {
+    //                 Some(TileType::Floor) => {
+    //                     ctx.set(x, y, YELLOW, BLACK, to_cp437('.'));
+    //                 }
+    //                 Some(TileType::Wall) => {
+    //                     ctx.set(x, y, GREEN, BLACK, to_cp437('#'));
+    //                 }
+    //                 None => {}
+    //             }
+    //         }
+    //     }
+    //    }
 }

@@ -437,13 +437,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "day13"
-version = "0.1.0"
-dependencies = [
- "bracket-lib",
-]
-
-[[package]]
 name = "deflate"
 version = "0.8.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1283,6 +1276,13 @@ checksum = "dc7c727aded0be18c5b80c1640eae0ac8e396abf6fa8477d96cb37d18ee5ec59"
 dependencies = [
  "ab_glyph_rasterizer",
  "owned_ttf_parser",
+]
+
+[[package]]
+name = "rusty_dungeon"
+version = "0.1.0"
+dependencies = [
+ "bracket-lib",
 ]
 
 [[package]]

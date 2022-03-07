@@ -19,6 +19,8 @@ img:hover {
 /* can have more than one class per element */
 .bacon {
     background-color: green;
+    position: relative;
+    left: 20px;
 }
 
 .broccoli {

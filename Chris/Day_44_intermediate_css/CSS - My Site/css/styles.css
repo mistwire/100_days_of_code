@@ -1,19 +1,14 @@
-
-
-
 body{
     margin: 0;
     text-align: center;
     font-family: 'Merriweather', serif;
 }
 
-
 h1{
     font-size: 5.625rem;
     color: #66BFBF;
     margin: 50px auto 0 auto;
     font-family: 'Sacramento', cursive;
-    line-height: 200%;
 }
 h2{
     font-size: 2.5rem;
@@ -24,9 +19,8 @@ h2{
 h3{
     font-family: 'Montserrat', sans-serif;
     color: #11999E;
+
 }
-
-
 
 .top-container {
     background-color: #E4F9F5;
@@ -42,7 +36,6 @@ h3{
 .pro{
     text-decoration: underline;
 }
-
 
 .bottom-container {
 
@@ -63,3 +56,32 @@ h3{
 .footer-link{
     color: #11999E;
 }
+
+.skill-row{
+    width: 50%;
+    margin: 100px auto 100px auto;
+    text-align: left;
+    line-height: 2;
+}
+
+.cloud-img{
+    width: 25%;
+    float: left;
+    margin-right: 30px;
+}
+
+.shark-img{
+    width: 150px;
+    height: 150px;
+    float: right;
+    margin-left: 30px;
+}
+/*
+.arch-skill-description{
+    clear: left;
+}
+
+.snorkel-skill-description{
+    clear: right;
+}
+*/

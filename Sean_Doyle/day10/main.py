@@ -20,6 +20,7 @@ while game_is_on:
     screen.update()
     car_manager.create_cars()
     car_manager.move_cars(score.level)
+
     if player.check_finish_line():
         player.reset_position()
         score.increase_level()

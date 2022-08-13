@@ -1,6 +1,7 @@
 body{
     margin: 0;
     text-align: center;
+    background: linear-gradient(#F0EABE 30%, #21E1E1, #3B9AE1, #3120E0 );
     font-family: 'Merriweather', serif;
 }
 
@@ -23,13 +24,13 @@ h3{
 }
 
 .top-container {
-    background-color: #E4F9F5;
+    /* background: linear-gradient(teal, purple) */
     position: relative;
     padding-top: 100px;
 }
 
 .middle-container {
-    background-color: #E4F9F5;
+    /* background-color: #E4F9F5; */
     position: relative;
     # padding-top: 100px;
 
@@ -40,7 +41,7 @@ h3{
 }
 
 .bottom-container {
-    background-color: #E4F9F5;
+    /* background-color: #E4F9F5; */ 
     position: relative;
     # padding-top: 100px;
 }

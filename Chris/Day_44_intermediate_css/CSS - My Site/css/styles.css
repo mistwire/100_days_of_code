@@ -1,7 +1,7 @@
 body{
     margin: 0;
     text-align: center;
-    background: linear-gradient(#F0EABE 30%, #21E1E1, #3B9AE1, #3120E0 );
+    background: linear-gradient(#21E1E1,#F0EABE, #21E1E1, #3B9AE1, #3120E0 );
     font-family: 'Merriweather', serif;
 }
 
@@ -71,6 +71,7 @@ h3{
 
 .cloud-img{
     width: 25%;
+    /* the float property allows the text to 'wrap' around the image */
     float: left;
     margin-right: 30px;
 }

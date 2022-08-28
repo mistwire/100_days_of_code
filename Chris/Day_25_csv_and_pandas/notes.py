@@ -1,17 +1,17 @@
-# import csv
+import csv
 #
-# # with open("weather_data.csv") as f:
-# #     data = f.readlines()
-# #
-# # print(data)
+# with open("weather_data.csv") as f:
+#     data = f.readlines()
 #
-# # with open("weather_data.csv") as f:
-# #     data = csv.reader(f)
-# #     print(data)  # creates csv object
-# #     for row in data:
-# #         print(row)  # each row is a list
+# print(data)
 #
-# # Extract all temps into a new list from weather_data.csv
+# with open("weather_data.csv") as f:
+#     data = csv.reader(f)
+#     print(data)  # creates csv object
+#     for row in data:
+#         print(row)  # each row is a list
+
+# Extract all temps into a new list from weather_data.csv
 # with open("weather_data.csv") as f:
 #     data = csv.reader(f)
 #     temps = []

@@ -7,10 +7,15 @@ driver = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().
 
 driver.get("https://www.python.org")
 
+# you can use .find_element or .find_elements (and get a list back)
 search_bar = driver.find_element(by=By.NAME, value="q")
 print(search_bar)
 print(search_bar.tag_name)
 print(search_bar.get_attribute("placeholder"))
+
+slide_menu = driver.find_elements(by=By.ID, value="dive-into-python")
+print(slide_menu)
+
 
 python_logo = driver.find_element(by=By.CLASS_NAME, value="python-logo")
 print(python_logo.size)

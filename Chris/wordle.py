@@ -3,6 +3,7 @@ import sys
 
 words = []
 
+
 with open('/usr/share/dict/words', 'r') as f:
     for line in f:
         if len(line.strip()) == 5:

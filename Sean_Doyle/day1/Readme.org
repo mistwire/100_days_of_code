@@ -18,20 +18,14 @@ today = datetime.today()
 today
 #+end_src
 
-#+RESULTS: test
-#+begin_src org
-2023-09-28 16:24:36.870055
-#+end_src
+/2023-09-28 16:24:36.870055/
 
 Let's take a look at the type here.
 #+begin_src python :session :results value org
 type(today)
 #+end_src
 
-#+RESULTS:
-#+begin_export org
-<class 'datetime.datetime'>
-#+end_export
+/<class 'datetime.datetime'>/
 
 And now for some datetime math
 #+begin_src python :session :results value org
@@ -50,10 +44,7 @@ def christmas_check(xmas, today):
 christmas_check(christmas, todaydate)
 #+end_src
 
-#+RESULTS:
-#+begin_src org
-Sorry there are still 88 until Christmas
-#+end_src
+/Sorry there are still 88 until Christmas/
 
 
 

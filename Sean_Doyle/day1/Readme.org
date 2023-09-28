@@ -1,6 +1,5 @@
-#+title: Readme
+#+title: 100 Days of Code Redux
 
-* 100 Days of Code Redux
 It has been awhile since I have spent a lot of time with code development.  It is something that I used to enjoy consistently, for work and hobby, however recent events in life and work have created a lot of busy-ness with my time and has distracted me from being creative and focusing on efforts that I enjoy.  One of which is creating both automation scripts as well as applications with code.  I am hoping to go through this hundred days with the goal of
 a) Reviewing my Python knowledge and shaking out the cobwebs since this was my primary language with years of experience and
 b) To learn Golang at the same time as I am working more and more with Go.

@@ -1,0 +1,16 @@
+#+title: Readme
+
+* 100 Days of Code Redux
+It has been awhile since I have spent a lot of time with code development.  It is something that I used to enjoy consistently, for work and hobby, however recent events in life and work have created a lot of busy-ness with my time and has distracted me from being creative and focusing on efforts that I enjoy.  One of which is creating both automation scripts as well as applications with code.  I am hoping to go through this hundred days with the goal of
+a) Reviewing my Python knowledge and shaking out the cobwebs since this was my primary language with years of experience and
+b) To learn Golang at the same time as I am working more and more with Go.
+
+I am glad Chris asked me if I wanted to participate in this again because I would have probably not thought about it for awhile if not.  Now the only thing is consistency :D.
+
+* Day 1 Python
+For this 100 days, I am going to work through Michael Kennedy's TalkPython training for [[https://training.talkpython.fm/courses/explore_100days_in_python/100-days-of-code-in-python][100daysofPython]].  I started this course in the past but took a break from it.  Mr Kennedy is an amazing Python guru and teacher, and I've really enjoyed his other courses.  The first few days are introducing manipulating time and datetime and is a great way to start my dive back into the world of python
+
+* Day 1 Go
+Even though I've worked through the Learn Go with Tests book, that was a bit ago and I think working through it again would be beneficial two fold; it opens up an intro to go without staying too long in the simple constructs of the language and then moves into more complex topics quickly.  The second benefit is it provides an overview of test driven development so developing both of these skill simultaneously will assist with any language.
+
+This starts with a trivial example of the traditional "hello world" app (and test) and then moves into non-trivial testing of it and refactoring.

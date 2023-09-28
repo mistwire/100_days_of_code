@@ -10,7 +10,7 @@ For this 100 days, I am going to work through Michael Kennedy's TalkPython train
 
 For the first few days, we are just messing around with datetime
 #+NAME: test
-#+begin_src python :session :results value pp
+#+begin_src python :session :results value html
 from datetime import datetime
 from datetime import date
 
@@ -19,18 +19,22 @@ today
 #+end_src
 
 #+RESULTS: test
-: datetime.datetime(2023, 9, 28, 16, 13, 20, 806766)
+#+begin_export html
+2023-09-28 16:22:51.944706
+#+end_export
 
 Let's take a look at the type here.
-#+begin_src python :session :results value pp
+#+begin_src python :session :results value html
 type(today)
 #+end_src
 
 #+RESULTS:
-: <class 'datetime.datetime'>
+#+begin_export html
+<class 'datetime.datetime'>
+#+end_export
 
 And now for some datetime math
-#+begin_src python :session :results value pp
+#+begin_src python :session :results value html
 from datetime import datetime
 from datetime import date
 
@@ -47,7 +51,9 @@ christmas_check(christmas, todaydate)
 #+end_src
 
 #+RESULTS:
-: 'Sorry there are still 88 until Christmas'
+#+begin_export html
+Sorry there are still 88 until Christmas
+#+end_export
 
 
 

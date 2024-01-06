@@ -1,4 +1,6 @@
 # Calculator
+import art
+
 
 # Add
 def add(n1, n2):
@@ -24,7 +26,8 @@ operations = {'+': add,
 
 
 def calculator():
-    num1 = int(input("What's the first number?: "))
+    print(art.logo)
+    num1 = float(input("What's the first number?: "))
     for k in operations:
         print(k)
 
@@ -32,8 +35,8 @@ def calculator():
 
     while go_again:
         operator = input("Pick an operator: ")
-        num2 = int(input("What's the next number?: "))
-        answer = operations[operator](num1, num2)
+        num2 = float(input("What's the next number?: "))
+        answer = operations[operator](num1, num2)~
 
         print(f"{num1} {operator} {num2} = {answer}")
 

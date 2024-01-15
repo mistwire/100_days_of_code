@@ -1,3 +1,5 @@
+"""A class used to represent a cars."""
+
 class Car:
     def __init__(self, make, model, year) -> None:
         # class attributes 
@@ -28,28 +30,5 @@ class Car:
     def increment_odometer(self, miles):
         "Add the given amount to the odometer reading"
         self.odometer_reading += miles
-
-# create an instance from the class
-my_new_car = Car('Volkswagen', 'ID.4', 2021)
-print(my_new_car.get_descriptive_name())
-my_new_car.read_odometer()
-
-# modifying an attribute's value directly:
-my_new_car.odometer_reading = 23 
-my_new_car.read_odometer() 
-
-# modifying an attributes value through a method:
-my_new_car.update_odometer(24)
-my_new_car.read_odometer()
-# add logic to prevent malformed input ;-) 
-my_new_car.update_odometer(14)
-
-my_used_car = Car('subaru', 'WRX', 2012)
-print(my_used_car.get_descriptive_name())
-my_used_car.update_odometer(12_000)
-my_used_car.read_odometer()
-my_used_car.increment_odometer(100)
-my_used_car.read_odometer()
-
 
 

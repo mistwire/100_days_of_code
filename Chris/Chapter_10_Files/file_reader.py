@@ -5,7 +5,9 @@ path = Path("pi_digits.txt")
 contents = path.read_text()
 lines = contents.splitlines()
 print(lines)
-for line in lines:
+
+# you can remove the temp variable and loop directly over the splitlines() returned list:
+for line in contents.splitlines():
     print(line)
 
     

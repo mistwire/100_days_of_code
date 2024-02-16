@@ -15,6 +15,8 @@ class User:
         self.following = 0
 
     # a method always start with a self parameter:
+    # the self parameter refers to the object that is calling the method
+    # it's a easy way to refer to the object's own attributes
     def follow(self, user):
         user.followers += 1
         self.following += 1
@@ -22,10 +24,14 @@ class User:
 user_1 = User("001", "chris")
 print(user_1.username)
 print(user_1.id)
+user_2 = User("002", "Kim")
 
 # you can 'make' new attributes on the fly
 user_1.fizz = "buzz"
 print(user_1.fizz)
 
-
-
+user_1.follow(user_2)
+print(user_1.followers)
+print(user_1.following) 
+print(user_2.followers)
+print(user_2.following)

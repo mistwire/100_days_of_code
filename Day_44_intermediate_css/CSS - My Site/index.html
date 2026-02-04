@@ -2,41 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- KEY CONCEPT: Viewport meta tag enables responsive design on mobile devices -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chris Williams</title>
+    <!-- PATTERN: External stylesheet links (always preferred over inline styles) -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico">
+    <!-- PATTERN: Google Fonts imports - preconnect speeds up font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet"> 
+    <!-- KEY CONCEPT: Load multiple Google Fonts in single request for efficiency -->
+    <!-- Merriweather (serif) for body, Montserrat (sans-serif) for headings, Sacramento (cursive) for branding -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- divs don't do anything until you use css with it -->
-    <!-- the purpose is to structure and divide up content-->
+    <!-- PATTERN: <div> tags are semantic containers for grouping related content -->
+    <!-- KEY CONCEPT: Divs enable section-based styling (background colors, spacing, positioning) -->
+    <!-- the purpose is to structure and divide up content into logical sections -->
+    <!-- .top-container class targets styling for this entire header section -->
     <div class="top-container">
-        <!-- https://stackoverflow.com/questions/2402761/is-img-element-block-level-or-inline-level -->
+        <!-- LAYOUT: Cloud images use absolute positioning (CSS .top-cloud and .bottom-cloud classes) -->
+        <!-- Absolutely positioned images create layered, decorative background effect -->
         <img class="top-cloud" src="images/cloud.png" alt="cloud-img">
         <h1>I'm Chris</h1>
-        <h2>a <span class="pro">pro</span>grammer.</h2>
+        <h2>a <span class="pro">pro</span>grammer.</h2>  <!-- <span class="pro"> applies text-decoration: underline -->
         <img class="bottom-cloud" src="images/cloud.png" alt="cloud-img">
-        <img src="images/mountain.png" alt="cloud-img">
+        <img src="images/mountain.png" alt="cloud-img">  <!-- Mountain creates parallax/layered effect with absolute clouds -->
     </div>
+    <!-- PATTERN: Semantic <div> containers organize page into logical sections -->
+    <!-- LAYOUT: .middle-container class constrains width and adds vertical margins -->
     <div class="middle-container">
         <div class="profile">
           <img src="CFW.jpg" alt="">
           <h2>Hello.</h2>
+          <!-- KEY CONCEPT: .intro class applies width: 30%; margin: auto to center content on wide screens -->
           <p class="intro">This is my personal webpage for the 100 Days of Code challenge. I am a cloud architect & AWS Hero by day, and a budding developer by night 😅</p>
         </div>
         <hr>
         <div class="skills">
           <h2>My Skills.</h2>
+          <!-- PATTERN: .skill-row creates a constrained-width container for skill descriptions -->
+          <!-- TEXT WRAPPING: float: left makes image float left; text wraps beside it (CSS Day 44 technique) -->
           <div class="skill-row">
             <img class="cloud-img" src="cloud-network.png" alt="">
             <h3>Cloud Architecture</h3>
             <p class="arch-skill-description">Lorem ipsum dolor sit amet, quis in duis, iaculis id felis. Consectetuer vestibulum, nunc urna lectus, erat ligula. Hendrerit nam, lectus ante, ut lorem eros. I like long walks on the beach and holding hands and sunsets.</p>
           </div>
+          <!-- PATTERN: float: right creates opposite effect - image floats right, text wraps left -->
           <div class="skill-row">
             <img class="shark-img" src="DSCN2007.JPG" alt="" width="500" height="600">
             <h3>Snorkeling</h3>
@@ -44,19 +58,25 @@
           </div>
         </div>
         <hr>
+        <!-- LAYOUT: Contact section with centered button -->
         <div class="contact-me">
           <h2>Get In Touch</h2>
           <h3>Do you want to talk about cloud stuff? Hit the button!</h3>
           <p class="contact-message">I can talk your ear off about cloud, snorkeling, Python programming, vBrownBag, DevOps, or AWS Hero stuff!</p>
+          <!-- PATTERN: <a> styled as button with .btn class (gradient, rounded, hover effects) -->
+          <!-- mailto: links trigger email client when clicked -->
           <a class="btn" href="mailto:chrisfwilliams@gmail.com">CONTACT ME</a>
         </div>
       </div>
-      
-      
+      <!-- LAYOUT: Footer section with teal background and social links -->
+      <!-- .bottom-container applies background-color and padding -->
       <div class="bottom-container">
+        <!-- PATTERN: Footer links styled with .footer-link class -->
+        <!-- Links styled without underline (text-decoration: none) but maintain color and hover effects -->
         <a class="footer-link" href="https://www.linkedin.com/in/chrisfwilliams/">LinkedIn</a>
         <a class="footer-link" href="https://twitter.com/mistwire">Twitter</a>
         <a class="footer-link" href="https://www.mistwire.com/">Website</a>
+        <!-- COPYRIGHT: Small copyright text with reduced font-size and light color -->
         <p class="copyright">© 2022 Chris Williams.</p>
       </div>
 

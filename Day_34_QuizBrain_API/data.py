@@ -1,12 +1,18 @@
 import requests
 
+# API: Open Trivia Database (free, no API key required)
+# Fetches random trivia questions in JSON format
 parameters = {
-    "amount": 10,
-    "type": "boolean",
+    "amount": 10,        # Number of questions to fetch
+    "type": "boolean",   # Only True/False questions (no multiple choice)
 }
 
+# KEY CONCEPT: Query parameters filter API results without hardcoding
 response = requests.get(url="https://opentdb.com/api.php", params=parameters)
-response.raise_for_status()
+response.raise_for_status()  # PATTERN: Always check status before parsing JSON
+
+# API response structure: {"response_code": 0, "results": [{ ... }]}
+# Extract the 'results' array which contains question objects
 question_data = response.json()['results']
 
 # question_data = [

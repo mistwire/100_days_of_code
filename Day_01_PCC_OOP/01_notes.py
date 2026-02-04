@@ -1,9 +1,12 @@
 class Dog:
     """A simple attempt to model a dog"""
+
+    # __init__ is the "constructor" -- it runs automatically every time you create a new instance.
+    # `self` is a reference to the specific instance being created.
     def __init__(self, name, age) -> None:
         """Init name and age attribs"""
-        self.name = name 
-        self.age = age 
+        self.name = name  # These are "instance attributes" -- each Dog gets its own copy
+        self.age = age
 
     def sit(self):
         """Simulate dog sitting command"""
@@ -12,7 +15,8 @@ class Dog:
     def roll_over(self):
         print(f"{self.name} rolled over!")
 
-# create an instance from the class
+# Creating an instance: Python calls Dog.__init__() behind the scenes,
+# passing the new object as `self` and your arguments as `name` and `age`.
 my_dog = Dog("Mephistopheles", 6)
 
 # access attributes
@@ -25,11 +29,11 @@ my_dog.roll_over()
 
 class Car:
     def __init__(self, make, model, year) -> None:
-        # class attributes 
+        # Instance attributes set from arguments -- each Car instance gets its own values
         self.make = make
         self.model = model
         self.year = year
-        # setting a default value for an attribute
+        # Default attribute -- not passed in, but every Car starts at 0 miles
         self.odometer_reading = 0
 
 
@@ -59,14 +63,15 @@ my_new_car = Car('Volkswagen', 'ID.4', 2021)
 print(my_new_car.get_descriptive_name())
 my_new_car.read_odometer()
 
-# modifying an attribute's value directly:
-my_new_car.odometer_reading = 23 
-my_new_car.read_odometer() 
+# APPROACH 1: Modify attribute directly -- simple but skips any validation
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
 
-# modifying an attributes value through a method:
+# APPROACH 2: Modify through a method -- preferred because the method
+# can enforce rules (like preventing odometer rollback)
 my_new_car.update_odometer(24)
 my_new_car.read_odometer()
-# add logic to prevent malformed input ;-) 
+# This will trigger the validation -- you can't set it lower than current reading
 my_new_car.update_odometer(14)
 
 my_used_car = Car('subaru', 'WRX', 2012)

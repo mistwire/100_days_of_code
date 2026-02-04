@@ -1,53 +1,76 @@
 import random
 
-# List Comprehensions Exercise 1
-# You are going to write a List Comprehension to create a new list called squared_numbers. 
-# This new list should contain every number in the list numbers but each number should be squared.
+# =================================================================
+# LIST COMPREHENSIONS
+# =================================================================
+
+# Exercise 1: Transform each element (square the numbers)
+# PATTERN: [expression for item in iterable]
 numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-# Write your 1 line code 👇 below:
-squared_numbers = [x*x for x in numbers]
-# Write your code 👆 above:
+# Traditional way:
+# squared_numbers = []
+# for x in numbers:
+#     squared_numbers.append(x * x)
+
+# List comprehension (concise and readable):
+squared_numbers = [x * x for x in numbers]
 print(squared_numbers)
 
-# List Comprehensions Exercise 2
+# Exercise 2a: Type conversion with comprehension
+# PATTERN: [conversion_function(item) for item in iterable]
 list_of_strings = ['1', '1', '2', '3', '5', '8', '13', '21', '34', '55']
-# 🚨 Do  not change the code above
-# TODO: Use list comprehension to convert the strings to integers 👇:
+# Convert strings to integers using int() inside comprehension
 to_int = [int(x) for x in list_of_strings]
-# TODO: Use list comprehension to filter out the odd numbers
-# and store the even numbers in a list called "result"
-result = [x for x in to_int if x%2 == 0]
-# Write your code 👆 above:
+
+# Exercise 2b: Filter with conditional
+# PATTERN: [expression for item in iterable if condition]
+# Keep only even numbers (x % 2 == 0)
+result = [x for x in to_int if x % 2 == 0]
 print(result)
 
 
-# Dictionary Comprehension Exercise 1
-# You are going to use Dictionary Comprehension to create a dictionary called result that takes 
-# each word in the given sentence and calculates the number of letters in each word.
+# =================================================================
+# DICTIONARY COMPREHENSIONS
+# =================================================================
+
+# Exercise 1: Create word-to-length mapping
+# PATTERN: {key_expression: value_expression for item in iterable}
 sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
-result= {k:len(k) for k in sentence.split()}
+# For each word in sentence, create key=word, value=word length
+result = {k: len(k) for k in sentence.split()}
+# Result: {'What': 4, 'is': 2, 'the': 3, 'Airspeed': 8, ...}
 print(result)
 
 
 
-# Dictionary Comprehension Exercise 2
+# Exercise 2: Filter existing dictionary with comprehension
+# Create dict with random scores for each student
 names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Fred", "George"]
-student_scores = {student:random.randint(1, 100) for student in names}
+student_scores = {student: random.randint(1, 100) for student in names}
+# Result: {'Alex': 45, 'Beth': 92, ...}
 print(student_scores)
-passed_students = {k:v for (k,v) in student_scores.items() if v >= 60}
+
+# PATTERN: Filter dict with conditional
+# {k: v for (k, v) in dict.items() if condition}
+# Keep only students with score >= 60
+passed_students = {k: v for (k, v) in student_scores.items() if v >= 60}
 print(passed_students)
 
-# Dictionary Comprehension Exercise 3
-# You are going to use Dictionary Comprehension to create a dictionary called weather_f that takes
-# each temperature in degrees Celsius and converts it into degrees Fahrenheit.
+# Exercise 3: Transform dictionary values with comprehension
+# Convert temperatures from Celsius to Fahrenheit
 weather_c = {"Monday": 12, "Tuesday": 14, "Wednesday": 15, "Thursday": 14, "Friday": 21, "Saturday": 22, "Sunday": 24}
-# 🚨 Don't change code above 👆
-# Write your code 👇 below:
-weather_f = {k:((v * 9/5) + 32)  for k,v in weather_c.items() }
+
+# PATTERN: Transform dict values
+# {key: new_value_expression for key, value in dict.items()}
+# Keep keys (day names), transform values (C to F)
+# Formula: F = (C * 9/5) + 32
+weather_f = {k: ((v * 9/5) + 32) for k, v in weather_c.items()}
 print(weather_f)
 
 
-# Iterate over a Pandas dataframe
+# =================================================================
+# PANDAS DATAFRAME ITERATION (Foundation for Day 26 NATO challenge)
+# =================================================================
 import pandas
 
 student_dict = {
@@ -55,24 +78,32 @@ student_dict = {
     "score": [56, 76, 98]
 }
 
-# Looping through dicts
+# PATTERN: Loop through dictionary items
+# .items() returns (key, value) tuples
 for (key, value) in student_dict.items():
+    # In this case, value is a list, not scalar
     print(value)
 
+# Convert dict to DataFrame for structured data handling
 student_data_frame = pandas.DataFrame(student_dict)
 print(student_data_frame)
 
-# Looping through df
+# PATTERN: Loop through DataFrame COLUMNS
+# .items() on DataFrame returns (column_name, Series) tuples
 for (key, value) in student_data_frame.items():
-    print(key)
-    print(value)
+    print(key)      # Column name: 'student', 'score'
+    print(value)    # Series: [Angela, James, Lily] or [56, 76, 98]
 
-# Loop through rows of a df
+# PATTERN: Loop through DataFrame ROWS (most common for data processing)
+# .iterrows() returns (index, row) tuples where row is a Series
+# This is what we use for dictionary comprehension in NATO challenge
 for (index, row) in student_data_frame.iterrows():
-    print(index)
-    print(row)
-    print(row.student)
-    print(row.score)
+    print(index)        # Row number: 0, 1, 2
+    print(row)          # Entire row as Series
+    print(row.student)  # Access column by attribute name
+    print(row.score)    # Can also use row["score"]
+
+    # Conditional logic on rows
     if row.student == "Angela":
         print(row.score)
 

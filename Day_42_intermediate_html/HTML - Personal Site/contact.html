@@ -6,21 +6,29 @@
 </head>
 <body>
 <h3>Contact Information</h3>
-    <ol> <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul -->
+    <!-- KEY CONCEPT: Navigation links organized in semantic ordered list -->
+    <ol>
         <li><a href="https://www.linkedin.com/in/chrisfwilliams/">LinkedIn</a></li>
         <li><a href="www.mistwire.com">www.mistwire.com</a></li>
         <li><a href="https://twitter.com/mistwire">Twitter</a></li>
     </ol>
 <hr>
-<!--https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form -->
-<!--https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
+<!-- PATTERN: HTML form with mailto: action sends form data via email (client-side only) -->
+<!-- KEY CONCEPT: Each input needs name= attribute; data submitted as: name=value pairs -->
+<!-- IMPORTANT: method="post" enctype="text/plain" required for mailto: forms to work properly -->
+<!-- Real apps use action="backend-api.php" or action="backend-script.py" to process data server-side -->
 <form action="mailto:chrisfwilliams@gmail.com" method="post" enctype="text/plain">
+    <!-- PATTERN: <label> improves accessibility; associates text with input field -->
     <label>Your Name:</label>
+    <!-- KEY CONCEPT: input type="text" creates single-line text field; name= is essential for submission -->
     <input type="text" name="yourName" value=""><br>
     <label>Your Email: </label>
+    <!-- KEY CONCEPT: input type="email" validates format and shows email keyboard on mobile devices -->
     <input type="email" name="yourEmail" value=""><br>
     <label> Your Message: </label><br>
+    <!-- PATTERN: <textarea> for multi-line text; rows/cols set dimensions (overridable with CSS Day 44+) -->
     <textarea name="yourMessage" rows="4" cols="50"></textarea><br><br>
+    <!-- KEY CONCEPT: type="submit" button submits form to action URL; value="" shows button label -->
     <input type="submit" name="">
 </form>
 

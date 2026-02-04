@@ -1,10 +1,16 @@
 
-<!-- selector {property: value;}  -->
-<!--   who    {  what  : how  ;}  -->
+/* PATTERN: Basic CSS structure comment showing selector, property, value relationship */
+/*   selector {property: value;}  */
+/*      who    {   what : how  ;}  */
 
+/* KEY CONCEPT: Element selectors apply to all instances; body styling affects entire page */
+/* background-color on body creates page-wide background */
 body {
     background-color: #EAF6F6;
 }
+
+/* PATTERN: Custom borders using border-style, border-width, border-color shorthand */
+/* border-style: dotted none none creates dotted top border, no sides/bottom */
 hr {
     border-style: dotted none none;
     border-width: 8px;
@@ -13,6 +19,8 @@ hr {
     width: 10%;
 }
 
+/* KEY CONCEPT: Reusing color (#66BFBF) maintains design consistency */
+/* Applying same color to h1 and h3 creates visual hierarchy */
 h1 {
     color: #66BFBF;
 }
@@ -21,6 +29,9 @@ h3 {
     color: #66BFBF;
 }
 
+/* PATTERN: Image sizing with max-width and height: auto for responsive design */
+/* border-radius: 75% creates pill-shaped (rounded square) images */
+/* max-width: 100% ensures images never exceed container */
 img {
     border-radius: 75%;
 

@@ -1,47 +1,41 @@
+# KEY CONCEPT: Dictionary basics (commented reference)
 # programming_dictionary = {
-#     "Bug": "An error in a program that prevents the program from running as expected.", 
-#     "Function": "A piece of code that you can easily call over and over again.",
+#     "Bug": "An error...",
+#     "Function": "A piece of code...",
 #     }
-# print(programming_dictionary["Bug"])
+# Access by key: programming_dictionary["Bug"]
+# Add new key: programming_dictionary["Loop"] = "value"
+# Loop through: for key in programming_dictionary: print(key, programming_dictionary[key])
 
-# # Add new item to dict
-# programming_dictionary["Loop"] = "The action of doing something over and over again"
-# print(programming_dictionary)
-
-# # Create an empty dict
-# empty_dict = {}
-
-# # Wipe an existing dict
-# # programming_dictionary = {}
-
-# # Edit an item in a dict 
-# programming_dictionary["Bug"] = "A moth in your computer"
-# print(programming_dictionary)
-
-# # Loop through a dict
-# for key in programming_dictionary:
-#     print(key)
-#     print(programming_dictionary[key])
-
+# PROBLEM: Transform raw scores into letter grades
+# Input: Dictionary mapping names to numeric scores
+# Output: Dictionary mapping names to letter grades
+# Algorithm: Loop through scores, apply grading scale, build new dict
 
 student_scores = {
   "Harry": 81,
   "Ron": 78,
-  "Hermione": 99, 
+  "Hermione": 99,
   "Draco": 74,
   "Neville": 62,
 }
 # 🚨 Don't change the code above 👆
-# TODO-1: Create an empty dictionary called student_grades.
+
+# STEP 1: Create empty dictionary to hold results
 student_grades = {}
 
-# TODO-2: Write your code below to add the grades to student_grades.👇
+# STEP 2: PATTERN - Transform one dictionary into another
+# KEY CONCEPT: Iterate through source dict's keys to access values
+# For each score, apply grading criteria and store result with same key
 for key in student_scores:
-    if student_scores[key] >= 91:
+    # ACCESS: Use key to get the score value
+    score = student_scores[key]
+    # CONDITIONAL: Apply grading scale (note: ranges are exclusive on upper end)
+    if score >= 91:
         student_grades[key] = "Outstanding"
-    elif student_scores[key]>= 81:
+    elif score >= 81:
         student_grades[key] = "Exceeds Expectations"
-    elif student_scores[key] >= 71:
+    elif score >= 71:
         student_grades[key] = 'Acceptable'
     else:
         student_grades[key] = 'Fail'

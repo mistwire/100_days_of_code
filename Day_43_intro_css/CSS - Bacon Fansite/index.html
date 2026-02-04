@@ -8,11 +8,18 @@
 </head>
 
 <body>
+  <!-- KEY CONCEPT: Combining selectors - this h1 is targeted by both element selector (h1) and ID selector (#heading) -->
+  <!-- ID selector wins due to higher specificity (#heading overrides the h1 styling) -->
   <h1 id="heading"> I Love Bacon</h1>
   <p>bacon, bacon, bacon, bacon, bacon, bacon</p>
   <p>bacon, bacon, bacon, bacon, bacon, bacon</p>
   <p>bacon, bacon, bacon, bacon, bacon, bacon</p>
+  <!-- PATTERN: Single class applied - the .bacon class styles this image -->
+  <!-- This image also gets :hover styling from CSS when user hovers -->
   <img class="bacon" src="https://emojipedia-us.s3.amazonaws.com/thumbs/240/apple/118/bacon_1f953.png" alt="bacon-img">
+  <!-- PATTERN: Multiple classes on one element (.broccoli .circular) -->
+  <!-- This enables composition: reusable .circular class applied to make any element circular -->
+  <!-- Element gets both .broccoli styling (red background) and .circular styling (border-radius: 100%) -->
   <img class="broccoli circular" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/broccoli_1f966.png" alt="broccoli-img">
 </body>
 

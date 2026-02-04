@@ -3,59 +3,65 @@
 import random
 import hangman_art
 import hangman_words
-import os 
+import os
 
-#TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
-chosen_word = random.choice(hangman_words.word_list)
+# PATTERN: Importing custom modules (Day 7 key concept)
+# These modules contain data (word_list, stages, logo) we'll use repeatedly
+chosen_word = random.choice(hangman_words.word_list)  # RANDOM MODULE: select one word from our list
 word_length = len(chosen_word)
 
 end_of_game = False
 lives = 6
 
-#TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
-
+# Display the game logo at startup - ASCII art makes the game feel more polished
 print(hangman_art.logo)
 
 #Testing code
 print(f'Pssst, the solution is {chosen_word}.')
 
-#Create blanks
+# Initialize display list with underscores - this is what the player sees
+# KEY CONCEPT: Using a list to track revealed letters (list mutation in loop)
 display = []
 guessed_letters = []
 
 for _ in range(word_length):
     display += "_"
 
+# GAME LOOP: Core game mechanics - keep playing until win/loss condition
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
     os.system('clear')
-    #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
+
+    # LOGIC CHECK: Prevent penalty for re-guessing the same letter
     if guess in guessed_letters:
         print(f"You've already tried {guess}!")
-    #Check guessed letter
+
+    # PATTERN: Compare user's guess against each position in the word
+    # This reveals all matching letters at once (like real Hangman)
     for position in range(word_length):
         letter = chosen_word[position]
-        # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
         if letter == guess:
-            display[position] = letter
+            display[position] = letter  # Mutable list: update in place
 
-    #Check if user is wrong.
+    # KEY CONCEPT: Wrong guess handling - deduct lives and give feedback
     if guess not in chosen_word:
-        #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
         print(f"{guess} is not in the secret word!")
         lives -= 1
         print(f"{lives} lives left")
         if lives == 0:
             end_of_game = True
             print("You lose.")
-    guessed_letters.append(guess) 
-    #Join all the elements in the list and turn it into a String.
+
+    guessed_letters.append(guess)  # Track all guesses (including repeats) for logic check above
+
+    # Display current state: join list elements with spaces for readability
     print(f"{' '.join(display)}")
 
-    #Check if user has got all letters.
+    # WIN CONDITION: Check if all letters are revealed (no underscores left)
     if "_" not in display:
         end_of_game = True
         print("You win!")
-    
-    #TODO-2: - Import the stages from hangman_art.py and make this error go away.
+
+    # Visual feedback: Show hangman ASCII art based on remaining lives
+    # Index 0=6 lives (full man), Index 6=0 lives (dead)
     print(hangman_art.stages[lives])

@@ -1,11 +1,16 @@
-# the slow cumbersome way
+# EVOLUTION: From manual file parsing to pandas DataFrames
+
+# =================================================================
+# 1. MANUAL FILE PARSING (Day 2 style - cumbersome!)
+# =================================================================
 # with open("./weather_data.csv", mode="r") as f:
 #     data = f.readlines()
 #     print(data)
 
-# with csv library create a list of all the temperatures
+# =================================================================
+# 2. CSV LIBRARY (Slightly better - still manual)
+# =================================================================
 # import csv
-
 # with open("weather_data.csv") as data_file:
 #     data = csv.reader(data_file)
 #     temperatures = []
@@ -13,60 +18,66 @@
 #         if i[1] != "temp":
 #             temperatures.append(i[1])
 #     print(temperatures)
+# This works but requires manual indexing, type conversion, etc.
 
-
-# and then there's Pandas!
+# =================================================================
+# 3. PANDAS (Modern Python data science standard!)
+# =================================================================
 # https://pandas.pydata.org/docs/
-# https://pandas.pydata.org/docs/reference/index.html 
-# DataFrame = excel spreadsheet, Series = row in spreadsheet 
-import pandas 
+# DataFrame = spreadsheet with rows/columns, Series = single column/row
+import pandas
 
+# KEY CONCEPT: read_csv() automatically parses headers and creates DataFrame
 data = pandas.read_csv("weather_data.csv")
-print(type(data))
-# get a single column:
-print(type(data["temp"]))
+print(type(data))  # <class 'pandas.core.frame.DataFrame'>
+
+# PATTERN: Access column by name (returns Series - 1D data structure)
+print(type(data["temp"]))  # <class 'pandas.core.series.Series'>
 print(data["temp"])
 
-# turn dataframe into a dictionary:
+# CONVERSION: DataFrame → Dictionary (useful for file I/O, Day 2 review)
 data_dict = data.to_dict()
 print(data_dict)
 
-# turn series into a list:
+# CONVERSION: Series → List (for when you need iteration without pandas)
 temp_list = data["temp"].to_list()
 print(len(temp_list))
 
+# PATTERN: Manual statistics vs pandas built-in methods
 avg_temp = sum(temp_list) / (len(temp_list))
 print(avg_temp)
 
-# OR
-
-average = print(data["temp"].mean())
+# KEY CONCEPT: pandas statistical methods (much cleaner!)
+# These work on Series: mean(), max(), min(), std(), sum(), count()
+average = data["temp"].mean()  # Replaces sum()/len() pattern
 print(average)
 
-max_value = print(data["temp"].max())
+max_value = data["temp"].max()
 print(max_value)
 
-# Get data in column
+# PATTERN: Multiple column access syntaxes (both work)
 print(data["condition"])
-# alternately 
-print(data.condition)
-print(data.condition[3])
+print(data.condition)  # Attribute syntax (works when column name is valid identifier)
+print(data.condition[3])  # Access specific row within column
 
-# Get data in a row
-print(data[data["day"] == "Monday"])
+# FILTERING PATTERN: Boolean indexing - get rows matching condition
+print(data[data["day"] == "Monday"])  # Returns DataFrame with matching rows
 
-# Print the row of data which had the highest temp
+# Find row with highest temperature
 print(data[data.temp == data.temp.max()])
 
-# Get a row & pull 1 column's info out
+# PATTERN: Chain operations - filter then extract column
 monday = data[data.day == "Monday"]
-print(monday.condition)
+print(monday.condition)  # Get condition column from Monday's data
 
-# Convert Monday's temp to Fahrenheit
+# PATTERN: Math operations on Series (vectorized - applies to all rows)
 monday = data[data.day == "Monday"]
+# This calculates Fahrenheit for every row in monday DataFrame
 print((monday.temp * 9/5) + 32)
 
-# Create a DataFrame from scratch
+# =================================================================
+# 4. CREATE DataFrame FROM SCRATCH (not from CSV)
+# =================================================================
 data_dict = {
     "students": ["Amy", "James", "Angela"],
     "scores": [76, 56, 65]
@@ -74,6 +85,7 @@ data_dict = {
 
 new_data = pandas.DataFrame(data_dict)
 print(new_data)
-# Save as a csv file:
+
+# PATTERN: Save DataFrame as CSV
 data.to_csv('new_data.csv')
 

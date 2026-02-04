@@ -8,15 +8,17 @@
 
 <h1>Chris Williams</h1>
 <p>
+    <!-- KEY CONCEPT: Semantic tags (em, strong) add meaning; links can be nested in other elements -->
     <em>
         <a href="https://aws.amazon.com/developer/community/heroes/chris-williams/">AWS Hero</a> and <strong>Enterprise
         Architect</strong>
     </em>
 </p>
-<!-- image tags = https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img -->
+<!-- PATTERN: IMG tag structure - always include alt attribute for accessibility; can reference local or remote URLs -->
 <img alt="remote Chris Williams headshot"
      src="https://pbs.twimg.com/profile_images/1408174213177958401/WSObzrdb_400x400.jpg">
 <br>
+<!-- KEY CONCEPT: Relative paths (CFW.jpg) load from same directory; absolute URLs require full domain -->
 <img alt="local Chris Williams headshot" src="CFW.jpg">
 
 <p>
@@ -24,12 +26,14 @@
 </p>
 <hr>
 <h3>Education</h3>
+<!-- KEY CONCEPT: Unordered lists (ul) when order doesn't matter; li items are semantic list items -->
 <ul>
     <li>USA - Psychology</li>
     <li>Munich - Psychology</li>
     <li>Athens - Greek Immersion</li>
 </ul>
-<!-- anchor tag https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a -->
+<!-- PATTERN: Relative paths enable site portability - hobbies.html and contact.html are in same directory -->
+<!-- Navigation: linking to other pages creates site structure; see Day 42+ for more sophisticated nav patterns -->
 <a href="hobbies.html"><h3>My Hobbies</h3></a>
 <br>
 <a href="contact.html"><h3>Contact Me</h3></a>

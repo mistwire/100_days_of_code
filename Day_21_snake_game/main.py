@@ -8,11 +8,11 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("🐍 Game :-)")
-screen.tracer(0) # https://docs.python.org/3.3/library/turtle.html?highlight=turtle#turtle.tracer 
+screen.tracer(0) # PATTERN: Disable automatic screen refresh; we manually call screen.update()
 
 snake = Snake()
 food = Food()
-scoreboard = Scoreboard()
+scoreboard = Scoreboard()  # KEY CONCEPT: Scoreboard persists game state (score, game over message)
 
 screen.listen() # listen for keystrokes
 screen.onkey(snake.up, "Up")
@@ -24,24 +24,27 @@ screen.onkey(snake.right, "Right")
 game_is_on = True
 
 while game_is_on:
-    screen.update()
-    time.sleep(0.1)
+    screen.update()  # Manually refresh screen (only when tracer(0))
+    time.sleep(0.1)  # PATTERN: Controls game speed; adjust for difficulty
     snake.move()
+
     # Detect collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
-        scoreboard.increase_score()
+        scoreboard.increase_score()  # Updates on-screen score immediately
         snake.extend()
 
     # Detect collision with wall
+    # PATTERN: Check boundaries to prevent snake from leaving screen
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_is_on = False
-        scoreboard.game_over() 
+        scoreboard.game_over()  # Displays final game state
 
     # Detect collision with tail
+    # KEY CONCEPT: Iterate through segments[1:] to skip head (can't collide with itself)
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             game_is_on = False
-            scoreboard.game_over() 
+            scoreboard.game_over()
 
 screen.exitonclick()

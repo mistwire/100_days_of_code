@@ -5,8 +5,11 @@
     <title>Chris Williams Resume</title>
 </head>
 <body>
-<table cellspacing="20"> <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table -->
-    <tr> <!-- image tags = https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img -->
+<!-- PATTERN: Tables for tabular data. Here: 2-column layout (image + text) - this is acceptable for resume-style layouts -->
+<!-- KEY CONCEPT: cellspacing controls spacing between cells (deprecated); CSS margin/padding preferred in Day 44+ -->
+<table cellspacing="20">
+    <!-- LAYOUT: Table row (tr) containing image cell and text cell for responsive multi-column design -->
+    <tr>
         <td><img alt="remote Chris Williams headshot"
                  src="https://pbs.twimg.com/profile_images/1408174213177958401/WSObzrdb_400x400.jpg"></td>
         <td><h1>Chris Williams</h1>
@@ -19,6 +22,8 @@
 <hr>
 <h3>Certifications, Awards, & Projects</h3>
 <hr>
+<!-- KEY CONCEPT: Each <tr> creates a row; this single-column table organizes achievements vertically -->
+<!-- PATTERN: Wrapping achievements in <a> tags makes them clickable; in Day 44, this becomes a styled list -->
 <table>
     <tr>
         <td><a href="https://aws.amazon.com/developer/community/heroes/chris-williams/">AWS Hero</a></td>
@@ -69,6 +74,9 @@
 <hr>
 <h3>Skills</h3>
 <hr>
+<!-- LAYOUT: 2-column table showing skill names and ratings; cellspacing=10 adds breathing room -->
+<!-- KEY CONCEPT: This is true tabular data (rows and columns with semantic meaning) - tables ARE appropriate here -->
+<!-- Modern alternative (Day 44+): CSS Grid creates more flexible, responsive layouts -->
 <table cellspacing="10">
     <tr>
         <td>Amazon Web Services</td>

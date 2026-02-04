@@ -3,17 +3,24 @@ line comment */
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference */
 
+/* SELECTOR: Element selectors target all instances of a tag (broadest reach) */
+/* Use element selectors for global styling that applies throughout page */
 /************************** TAG SELECTORS *******************/
 h1 {
     font-size: 200px;
     color: red;
 }
 
+/* KEY CONCEPT: Pseudo-classes style elements in special states (hover, active, focus, etc.) */
+/* :hover triggers when user moves mouse over element - improves interactivity */
 /* psuedo classes */
 img:hover {
     background-color: gold;
 }
 
+/* SELECTOR: Class selectors use .classname; moderate specificity; reusable on many elements */
+/* Multiple elements can share a class; one element can have multiple classes */
+/* Use classes for styling groups of related elements (preferred over IDs) */
 /********************** CLASS SELECTORS ********************/
 /* use classes when you have a group of items to be styled the same way */
 /* can have more than one class per element */
@@ -26,10 +33,16 @@ img:hover {
 .broccoli {
     background-color: red;
 }
+
+/* KEY CONCEPT: Multiple classes enable composition - small, reusable style modules */
+/* .circular can be applied to any element that needs rounded shape */
 .circular{
     border-radius: 100%;
 }
 
+/* SELECTOR: ID selectors use #idname; highest specificity; targets one unique element */
+/* CAUTION: Avoid over-using IDs - they create high specificity that's hard to override */
+/* Better practice: use classes for most styling, IDs only for unique page sections */
 /********************** ID SELECTORS ********************/
 /* Use IDs when you have ONE item to be styled a specific way (rarely used) */
 #heading {

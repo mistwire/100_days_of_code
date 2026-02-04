@@ -1,22 +1,30 @@
+/* PATTERN: Page-wide styling on body element - sets defaults for entire page */
+/* margin: 0 removes browser default margins (important for full-width designs) */
 body{
-    color: #40514E; 
+    color: #40514E;
     margin: 0;
     text-align: center;
-    /* background: linear-gradient(#21E1E1,#F0EABE, #21E1E1, #3B9AE1, #3120E0 ); */ 
-    font-family: 'Merriweather', serif;
+    /* background: linear-gradient(#21E1E1,#F0EABE, #21E1E1, #3B9AE1, #3120E0 ); */
+    font-family: 'Merriweather', serif;  /* Google Font: serif for body text (readable, elegant) */
 }
 
+/* KEY CONCEPT: rem units (root em) scale with base font size - flexible and accessible */
+/* 5.625rem = 90px (5.625 * 16px default base) */
+/* margin: 50px auto 0 auto = top margin, auto left/right (centers), 0 bottom */
 h1{
     font-size: 5.625rem;
     color: #66BFBF;
-    margin: 50px auto 0 auto;
-    font-family: 'Sacramento', cursive;
+    margin: 50px auto 0 auto;  /* Centers h1 horizontally with auto left/right */
+    font-family: 'Sacramento', cursive;  /* Decorative cursive Google Font for big impact */
 }
+
+/* KEY CONCEPT: h2 styling uses sans-serif (cleaner than serif for headings) */
+/* padding-bottom adds space below heading (inside box model) */
 h2{
     font-size: 2.5rem;
     color: #66BFBF;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
+    font-family: 'Montserrat', sans-serif;  /* Google Font: clean sans-serif */
+    font-weight: normal;  /* Don't bold h2 by default (lighter visual weight) */
     padding-bottom: 10px;
 }
 h3{
@@ -36,57 +44,73 @@ hr {
     margin: 100px auto;
 }
 
+/* PATTERN: Styling all links at once with element selector */
+/* text-decoration: none removes underline (common for nav links) */
 a{
     color: #11999E;
     font-family: 'Montserrat', sans-serif;
-    margin: 10px 20px;
-    text-decoration: none;
+    margin: 10px 20px;  /* Space around links */
+    text-decoration: none;  /* Remove default underline */
 }
 
+/* KEY CONCEPT: Pseudo-class :hover adds interactivity - visual feedback when user hovers */
+/* Color change signals the link is clickable */
 a:hover{
-    color: #EAF6F6;
+    color: #EAF6F6;  /* Bright color on hover catches attention */
 }
 
+/* KEY CONCEPT: Class selectors (.) for reusable components */
+/* LAYOUT: .top-container is section with background color and padding */
+/* position: relative enables positioned children (clouds positioned absolutely relative to this) */
 .top-container {
     /* background: linear-gradient(teal, purple) */
-    background-color: #E4F9F5; 
-    position: relative;
-    padding-top: 100px;
+    background-color: #E4F9F5;
+    position: relative;  /* Positioning context for absolutely-positioned children (clouds) */
+    padding-top: 100px;  /* Push content down from top */
 }
 
+/* LAYOUT: Middle section with vertical margins to separate from top/bottom */
 .middle-container {
-    margin: 100px 0;
+    margin: 100px 0;  /* Top/bottom margins create breathing room */
 }
 
+/* PATTERN: Class for small text styling (underline makes "pro" stand out) */
 .pro{
     text-decoration: underline;
 }
 
+/* KEY CONCEPT: max-width + margin: auto centers content on large screens */
+/* width: 30% limits width, margin: auto centers horizontally */
+/* This pattern makes content readable on wide screens (max ~30% width feels less overwhelming) */
 .intro{
     width: 30%;
-    margin: auto;
+    margin: auto;  /* Centers when combined with width constraint */
 }
 
 .contact-message {
     width: 30%;
-    margin: 40px auto 60px;
+    margin: 40px auto 60px;  /* 40px top, auto left/right (centers), 60px bottom */
 }
 
-.bottom-container { 
+/* LAYOUT: Footer section with background and padding */
+.bottom-container {
     background-color: #66bfbf;
-    padding: 50px 0 20px;
+    padding: 50px 0 20px;  /* Top padding, no left/right (full width), bottom padding */
 }
 
+/* PATTERN: Absolute positioning creates overlays (clouds in background) */
+/* KEY CONCEPT: position: absolute removes element from normal flow */
+/* Positioned relative to nearest positioned ancestor (.top-container has position: relative) */
 .top-cloud{
-    position: absolute;
-    right: 300px;
-    top: 50px;
+    position: absolute;  /* Taken out of flow - positioned freely */
+    right: 300px;  /* Distance from right edge of positioned parent */
+    top: 50px;  /* Distance from top edge of positioned parent */
 }
 
 .bottom-cloud {
     position: absolute;
-    left: 300px;
-    bottom: 300px;
+    left: 300px;  /* Distance from left edge */
+    bottom: 300px;  /* Distance from bottom edge */
 }
 
 .footer-link{
@@ -99,45 +123,57 @@ a:hover{
     padding: 20px 0;
 }
 
+/* LAYOUT: Skills section - constrained width, centered, with generous vertical spacing */
 .skill-row{
     width: 50%;
-    margin: 100px auto 100px auto;
-    text-align: left;
+    margin: 100px auto 100px auto;  /* 100px vertical spacing, auto horizontal (centers) */
+    text-align: left;  /* But content inside is left-aligned (reset from body center) */
 }
 
+/* PATTERN: Float for text wrapping around images (legacy layout technique) */
+/* KEY CONCEPT: float removes element from normal flow and allows text to wrap beside it */
+/* float: left + width makes image shrink; text flows beside it */
 .cloud-img{
     width: 25%;
     /* the float property allows the text to 'wrap' around the image */
-    float: left;
-    margin-right: 30px;
+    float: left;  /* Image floats left, text wraps to right */
+    margin-right: 30px;  /* Space between image and text */
 }
 
+/* PATTERN: Float right creates opposite effect (image on right, text wraps to left) */
 .shark-img{
     width: 150px;
     height: 150px;
-    float: right;
-    margin-left: 30px;
+    float: right;  /* Image floats right, text wraps to left */
+    margin-left: 30px;  /* Space between image and text */
 }
 
+/* PATTERN: Professional button styling with gradient and rounded corners */
+/* Fallback background + vendor-prefixed gradients ensures browser compatibility */
+/* -webkit (Chrome, Safari), -moz (Firefox), -ms (IE), -o (Opera) */
 .btn {
-    background: #11cdd4;
+    background: #11cdd4;  /* Fallback if gradients not supported */
+    /* Multiple background-image declarations for vendor prefixes (older browsers) */
     background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
     background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
     background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
     background-image: -o-linear-gradient(top, #11cdd4, #11999e);
-    background-image: linear-gradient(to bottom, #11cdd4, #11999e);
+    background-image: linear-gradient(to bottom, #11cdd4, #11999e);  /* Standard syntax (modern browsers) */
+    /* Rounded corners with vendor prefixes */
     -webkit-border-radius: 8;
     -moz-border-radius: 8;
-    border-radius: 8px;
+    border-radius: 8px;  /* Standard syntax */
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
+    padding: 10px 20px 10px 20px;  /* Padding creates clickable area around text */
+    text-decoration: none;  /* Remove underline (links styled as buttons) */
   }
-  
+
+/* KEY CONCEPT: :hover pseudo-class creates visual feedback */
+/* Color change on hover signals interactivity and improves UX */
 .btn:hover {
-    background: #30e3cb;
+    background: #30e3cb;  /* Brighter color on hover */
     background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
     background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
     background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
